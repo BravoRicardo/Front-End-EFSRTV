@@ -1,0 +1,30 @@
+<app-header></app-header>
+<div class="scroll-container" infiniteScroll [infiniteScrollDistance]="0.5"
+[infiniteScrollThrottle]="50"
+(scrolled)="loadMore()">
+    <h3>Lista de Productos Bazar la Caserita</h3><br>
+    <button type="button" class="btn btn-primary mb-2" (click)="nuevoProducto()">Nuevo Producto</button>
+    <button class="btn btn-secondary mb-2" (click)="exportPdf()">Exportar tabla como PDF</button>
+<!-- Si queremos que la tabla sea blanca o negra solo cambiar dark a light o viceversa -->
+<table id="TablaProductos" class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre de Producto</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Stock</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos" (click) ="editarProducto(producto.productName)">
+        <th scope="row">{{producto.id}}</th>
+        <td>{{producto.productName}}</td>
+        <td>{{producto.category}}</td>
+        <td>{{producto.unitPrice}}</td>
+        <td>{{producto.stock}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+<app-footer></app-footer>
